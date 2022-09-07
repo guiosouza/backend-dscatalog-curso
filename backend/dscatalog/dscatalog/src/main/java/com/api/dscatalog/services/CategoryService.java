@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.api.dscatalog.entities.Category;
 import com.api.dscatalog.repositories.CategoryRepository;
@@ -21,6 +22,7 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository repository;
 	
+	@Transactional (readOnly = true) // garante mais estabilidade banco 
 	public List<Category> findAll() {
 		return repository.findAll();
 	}
